@@ -1,0 +1,27 @@
+body{
+    background-image: linear-gradient(to right, rgb(0, 0, 0) , rgb(31, 31, 31) , rgb(0, 0, 0));
+}
+
+.row{
+    margin: 10px;
+    padding: 10px;
+    color: whitesmoke;
+}
+
+.col{
+    align-content: center;
+    text-align: center;
+}
+
+.btn{
+    width: 100%;
+    font-family: 'Patrick Hand SC', cursive;
+}
+
+#time-remaining{
+    font-family: 'Patrick Hand SC', cursive;
+}
+
+#question{
+    font-family: 'Patrick Hand SC', cursive;
+}
