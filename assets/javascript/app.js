@@ -1,46 +1,46 @@
 const questionInfo = [{
-    question: "1 Lorem ipsum dolor sit amet consectetur adipisicing elit?",
-    possibleAnswers: ["answer 1","answer 2","answer 3","answer 4"],
-    answer: "answer 3",
-    gifUrl: "../images/taco.gif"},
+    question: "The average human body contains how many pints of blood?",
+    possibleAnswers: ["Five","Nine","Twelve","Twenty"],
+    answer: "Nine",
+    gifUrl: "assets/images/1.gif"},
     {
-    question: "2 Lorem ipsum dolor sit amet consectetur adipisicing elit?",
-    possibleAnswers: ["answer 1","answer 2","answer 3","answer 4"],
-    answer: "answer 3",
-    gifUrl: "../images/taco.gif"},
+    question: "In which city is Jim Morrison buried?",
+    possibleAnswers: ["Paris","Nashville","London","Sacramento"],
+    answer: "Paris",
+    gifUrl: "assets/images/2.gif"},
     {
-    question: "3 Lorem ipsum dolor sit amet consectetur adipisicing elit?",
-    possibleAnswers: ["answer 1","answer 2","answer 3","answer 4"],
-    answer: "answer 3",
-    gifUrl: "../images/taco.gif"},
+    question: "Which movie features the song Ding Dong The Witch Is Dead?",
+    possibleAnswers: ["The Blair Witch Project","Sleeping Beauty","Bewitched","The Wizard of Oz"],
+    answer: "The Wizard of Oz",
+    gifUrl: "assets/images/3.gif"},
     {
-    question: "4 Lorem ipsum dolor sit amet consectetur adipisicing elit?",
-    possibleAnswers: ["answer 1","answer 2","answer 3","answer 4"],
-    answer: "answer 3",
-    gifUrl: "../images/taco.gif"},
+    question: "The Statue of Liberty was given to the US by which country?",
+    possibleAnswers: ["Spain","Germany","England","France"],
+    answer: "France",
+    gifUrl: "assets/images/4.gif"},
     {
-    question: "5 Lorem ipsum dolor sit amet consectetur adipisicing elit?",
-    possibleAnswers: ["answer 1","answer 2","answer 3","answer 4"],
-    answer: "answer 3",
-    gifUrl: "../images/taco.gif"},
+    question: "What is the name of Batman’s butler?",
+    possibleAnswers: ["Wadsworth","Belvedere","Alfred","Jeeves"],
+    answer: "Alfred",
+    gifUrl: "assets/images/5.gif"},
     {
-    question: "6 Lorem ipsum dolor sit amet consectetur adipisicing elit?",
-    possibleAnswers: ["answer 1","answer 2","answer 3","answer 4"],
-    answer: "answer 3",
-    gifUrl: "../images/taco.gif"},
+    question: "Who was the US president during World War I?",
+    possibleAnswers: ["Herbert Hoover","Calvin Coolidge","Woodrow Wilson","Theodore Roosevelt"],
+    answer: "Woodrow Wilson",
+    gifUrl: "assets/images/6.gif"},
     {
-    question: "7 Lorem ipsum dolor sit amet consectetur adipisicing elit?",
-    possibleAnswers: ["answer 1","answer 2","answer 3","answer 4"],
-    answer: "answer 3",
-    gifUrl: "../images/taco.gif"},
+    question: "Hg is the chemical symbol of which element?",
+    possibleAnswers: ["Hydrogen","Mercury","Iron","Gold"],
+    answer: "Mercury",
+    gifUrl: "assets/images/7.gif"},
     {
-    question: "8 Lorem ipsum dolor sit amet consectetur adipisicing elit?",
-    possibleAnswers: ["answer 1","answer 2","answer 3","answer 4"],
-    answer: "answer 3",
-    gifUrl: "../images/taco.gif"}
+    question: "Little Cuba is the nickname of what Florida city?",
+    possibleAnswers: ["Miami","Key Largo","Sarasota","Key West"],
+    answer: "Miami",
+    gifUrl: "assets/images/8.gif"}
 ]
 
-let timer = 30;
+let timer = 10;
 let timerInterval;
 let index = 0;
 let isCorrect;
@@ -50,7 +50,7 @@ let unanswered = 0;
 
 function initializeGame(){
     $("#time-remaining").css("visibility","hidden");
-    $("#time-remaining").text("Time remaining: 30");
+    $("#time-remaining").text("Time remaining: 10");
     $("#question").css("visibility","hidden");
     $("#question").text(".");
     $("#answer-1").css("visibility","hidden");
@@ -87,7 +87,7 @@ function startTimer(){
 
 function resetTimer(){
     //stop timer and reset it to 30 and display it on screen
-    timer = 30;
+    timer = 10;
     $("#time-remaining").text("Time remaining: " + timer);
     clearInterval(timerInterval);
 }
@@ -102,6 +102,8 @@ function outOfTime(){
     $("#answer-2").css("visibility","hidden");
     $("#answer-3").css("visibility","hidden");
     $("#answer-4").css("visibility","hidden");
+    $("#gif").attr("src", questionInfo[index].gifUrl);
+    $("#gif").css("visibility","visible");
     //after 5 seconds go to the next question page
     setTimeout(showQuestionPage, 5000);
     index++;
@@ -123,6 +125,7 @@ function showQuestionPage(){
     $("#answer-2").css("visibility","visible");
     $("#answer-3").css("visibility","visible");
     $("#answer-4").css("visibility","visible");
+    $("#gif").css("visibility","hidden");
     startTimer();
 }
 
@@ -137,8 +140,11 @@ function showAnswerPage(correct){
         $("#answer-2").css("visibility","hidden");
         $("#answer-3").css("visibility","hidden");
         $("#answer-4").css("visibility","hidden");
+        $("#gif").attr("src", questionInfo[index].gifUrl);
+        $("#gif").css("visibility","visible");
         //after 5 seconds go to the next question page
         setTimeout(showQuestionPage, 5000);
+        
     }
     //if the wrong answer was chosen
     else{
@@ -149,6 +155,9 @@ function showAnswerPage(correct){
         $("#answer-2").css("visibility","hidden");
         $("#answer-3").css("visibility","hidden");
         $("#answer-4").css("visibility","hidden");
+        $("#gif").attr("src", questionInfo[index].gifUrl);
+        $("#gif").css("visibility","visible");
+
         //after 5 seconds go to the next question page
         setTimeout(showQuestionPage, 5000);
     }
@@ -166,6 +175,7 @@ function gameOver(){
     $("#answer-2").css("visibility","visible");
     $("#answer-3").css("visibility","visible");
     $("#answer-4").css("visibility","visible");
+    $("#gif").css("visibility","hidden");
     //reset counter variables
     index = 0;
     correctCount = 0;
